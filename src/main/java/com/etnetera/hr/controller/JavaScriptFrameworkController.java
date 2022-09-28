@@ -85,4 +85,10 @@ public class JavaScriptFrameworkController {
 		}
 
 	}
+
+	@GetMapping("/hype")
+	@ResponseBody
+	public Iterable<JavaScriptFrameworkDto> getFrameworksByHype(@Validated @RequestParam("hypeLevel") String hypeLevel) {
+		return javaScriptFrameworkService.getFrameworksByHype(hypeLevel);
+	}
 }

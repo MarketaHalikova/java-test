@@ -16,4 +16,5 @@ public interface JavaScriptFrameworkService {
 
     Optional<JavaScriptFrameworkDto> updateFramework(JavaScriptFrameworkDto framework);
 
+    Iterable<JavaScriptFrameworkDto> getFrameworksByHype(String hypeLevel);
 }
