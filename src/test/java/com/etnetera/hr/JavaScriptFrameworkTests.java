@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Etnetera
  *
  */
-
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class JavaScriptFrameworkTests {
