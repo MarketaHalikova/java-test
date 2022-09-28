@@ -1,18 +1,19 @@
 package com.etnetera.hr.service;
 
-import com.etnetera.hr.domain.JavaScriptFramework;
+import com.etnetera.hr.dto.CreateJavaScriptFrameworkDto;
+import com.etnetera.hr.dto.JavaScriptFrameworkDto;
 
 import java.util.Optional;
 
 public interface JavaScriptFrameworkService {
-    Iterable<JavaScriptFramework> getAllFrameworks();
+    Iterable<JavaScriptFrameworkDto> getAllFrameworks();
 
-    Optional<JavaScriptFramework> findFrameworkById(Long id);
+    Optional<JavaScriptFrameworkDto> findFrameworkById(Long id);
 
-    Optional<JavaScriptFramework> saveFramework(JavaScriptFramework createFrameworkDto);
+    Optional<JavaScriptFrameworkDto> saveFramework(CreateJavaScriptFrameworkDto createFrameworkDto);
 
     boolean deleteFramework(Long id);
 
-    Optional<JavaScriptFramework> updateFramework(JavaScriptFramework framework);
+    Optional<JavaScriptFrameworkDto> updateFramework(JavaScriptFrameworkDto framework);
 
 }

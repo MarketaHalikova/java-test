@@ -1,6 +1,8 @@
 package com.etnetera.hr.controller;
 
 import com.etnetera.hr.domain.JavaScriptFramework;
+import com.etnetera.hr.dto.CreateJavaScriptFrameworkDto;
+import com.etnetera.hr.dto.JavaScriptFrameworkDto;
 import com.etnetera.hr.repository.JavaScriptFrameworkRepository;
 import com.etnetera.hr.service.JavaScriptFrameworkService;
 import lombok.RequiredArgsConstructor;
@@ -29,14 +31,14 @@ public class JavaScriptFrameworkController {
 
 	@GetMapping
 	@ResponseBody
-	public Iterable<JavaScriptFramework> getAllFrameworks() {
+	public Iterable<JavaScriptFrameworkDto> getAllFrameworks() {
 		return javaScriptFrameworkService.getAllFrameworks();
 	}
 
 	@GetMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<JavaScriptFramework> getFrameworkById(@PathVariable Long id) {
-		Optional<JavaScriptFramework> framework = javaScriptFrameworkService.findFrameworkById(id);
+	public ResponseEntity<JavaScriptFrameworkDto> getFrameworkById(@PathVariable Long id) {
+		Optional<JavaScriptFrameworkDto> framework = javaScriptFrameworkService.findFrameworkById(id);
 
 		if (framework.isPresent()) {
 			return ResponseEntity.ok().body(framework.get());
@@ -48,9 +50,9 @@ public class JavaScriptFrameworkController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
 	@ResponseBody
-	public ResponseEntity saveFramework(@Valid @RequestBody JavaScriptFramework createJavaScriptFrameworkDto) {
+	public ResponseEntity saveFramework(@Valid @RequestBody CreateJavaScriptFrameworkDto createJavaScriptFrameworkDto) {
 
-		Optional<JavaScriptFramework> framework = javaScriptFrameworkService.saveFramework(createJavaScriptFrameworkDto);
+		Optional<JavaScriptFrameworkDto> framework = javaScriptFrameworkService.saveFramework(createJavaScriptFrameworkDto);
 		if (framework.isPresent()) {
 			return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(framework.get());
 		} else {
@@ -73,8 +75,8 @@ public class JavaScriptFrameworkController {
 
 	@PutMapping
 	@ResponseBody
-	public ResponseEntity updateFramework(@Valid @RequestBody JavaScriptFramework frameworkDto) {
-		Optional<JavaScriptFramework> framework = javaScriptFrameworkService.updateFramework(frameworkDto);
+	public ResponseEntity updateFramework(@Valid @RequestBody JavaScriptFrameworkDto frameworkDto) {
+		Optional<JavaScriptFrameworkDto> framework = javaScriptFrameworkService.updateFramework(frameworkDto);
 
 		if (framework.isPresent()) {
 			return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(framework.get());
@@ -83,5 +85,4 @@ public class JavaScriptFrameworkController {
 		}
 
 	}
-
 }

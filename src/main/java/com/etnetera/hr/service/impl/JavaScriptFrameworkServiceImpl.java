@@ -1,6 +1,7 @@
 package com.etnetera.hr.service.impl;
 
-import com.etnetera.hr.domain.JavaScriptFramework;
+import com.etnetera.hr.dto.CreateJavaScriptFrameworkDto;
+import com.etnetera.hr.dto.JavaScriptFrameworkDto;
 import com.etnetera.hr.service.JavaScriptFrameworkService;
 import org.springframework.stereotype.Service;
 
@@ -8,18 +9,19 @@ import java.util.Optional;
 
 @Service
 public class JavaScriptFrameworkServiceImpl implements JavaScriptFrameworkService {
+
     @Override
-    public Iterable<JavaScriptFramework> getAllFrameworks() {
+    public Iterable<JavaScriptFrameworkDto> getAllFrameworks() {
         return null;
     }
 
     @Override
-    public Optional<JavaScriptFramework> findFrameworkById(Long id) {
+    public Optional<JavaScriptFrameworkDto> findFrameworkById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<JavaScriptFramework> saveFramework(JavaScriptFramework createFrameworkDto) {
+    public Optional<JavaScriptFrameworkDto> saveFramework(CreateJavaScriptFrameworkDto createFrameworkDto) {
         return Optional.empty();
     }
 
@@ -29,7 +31,7 @@ public class JavaScriptFrameworkServiceImpl implements JavaScriptFrameworkServic
     }
 
     @Override
-    public Optional<JavaScriptFramework> updateFramework(JavaScriptFramework framework) {
+    public Optional<JavaScriptFrameworkDto> updateFramework(JavaScriptFrameworkDto framework) {
         return Optional.empty();
     }
 }
