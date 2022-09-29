@@ -65,8 +65,8 @@ public class JavaScriptFrameworkServiceImplTest {
     }
 
     @Test
-    @DisplayName("Returning all frameworks. Should return all JavaScript frameworks")
-    void testReturnAllFrameworks() {
+    @DisplayName("Returning all frameworks. Should return all JavaScript frameworks dtos")
+    void testGetAllFrameworks() {
         Iterable<JavaScriptFramework> frameworks = Arrays.asList(framework1, framework2);
         Mockito.when(frameworkRepository.findAll()).thenReturn(frameworks);
         Mockito.when(frameworkMapper.entityToDto(Mockito.any(JavaScriptFramework.class))).thenReturn(frameworkDto);
@@ -82,7 +82,7 @@ public class JavaScriptFrameworkServiceImplTest {
 
     @Test
     @DisplayName("Trying to return all frameworks when there are none present. Should return empty Iterable")
-    void testReturnAllFrameworks_noFrameworksFound() {
+    void testGetAllFrameworks_noFrameworksFound() {
         Iterable<JavaScriptFramework> frameworks = new ArrayList<>();
         Mockito.when(frameworkRepository.findAll()).thenReturn(frameworks);
         Mockito.when(frameworkMapper.entityToDto(Mockito.any(JavaScriptFramework.class))).thenReturn(frameworkDto);

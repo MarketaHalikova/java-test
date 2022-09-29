@@ -31,13 +31,20 @@ public class DataBuilder implements ApplicationListener<ContextRefreshedEvent> {
                 .hypeLevel(HypeLevelEnum.LETDOWN)
                 .versions(Set.of("3.6.0", "3.5.0"))
                 .build();
-
         JavaScriptFramework framework2 = JavaScriptFramework.builder()
+                .name("React")
+                .deprecationDate(new Calendar.Builder()
+                        .setDate(2021, 2, 21)
+                        .build().getTime())
+                .hypeLevel(HypeLevelEnum.SENSATIONAL)
+                .versions(Set.of("3.6.0", "3.5.0"))
+                .build();
+        JavaScriptFramework framework3 = JavaScriptFramework.builder()
                 .name("Backbone")
                 .hypeLevel(HypeLevelEnum.SOLID)
                 .versions(Set.of("1.4.1"))
                 .build();
-        JavaScriptFramework framework3 = JavaScriptFramework.builder()
+        JavaScriptFramework framework4 = JavaScriptFramework.builder()
                 .name("VueJs")
                 .hypeLevel(HypeLevelEnum.SENSATIONAL)
                 .versions(Set.of("3.2.0", "3.2.1"))
@@ -45,7 +52,7 @@ public class DataBuilder implements ApplicationListener<ContextRefreshedEvent> {
         javaScriptFrameworkRepository.save(framework1);
         javaScriptFrameworkRepository.save(framework2);
         javaScriptFrameworkRepository.save(framework3);
-
+        javaScriptFrameworkRepository.save(framework4);
     }
 }
 
