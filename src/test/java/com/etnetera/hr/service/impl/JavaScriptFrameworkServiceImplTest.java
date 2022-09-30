@@ -132,7 +132,6 @@ public class JavaScriptFrameworkServiceImplTest {
 
         Optional<JavaScriptFrameworkDto> result = frameworkService.saveFramework(createFrameworkDto);
 
-
         assertThat(result).isPresent();
         verify(frameworkMapper, times(1)).entityToDto(framework1);
         verify(frameworkMapper, times(1)).createDtoToEntity(createFrameworkDto);

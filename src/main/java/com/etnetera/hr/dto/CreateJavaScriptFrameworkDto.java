@@ -9,6 +9,10 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
 
+/**
+ *  DTO for Framework creation
+ * @author Marketa Halikova
+ */
 @Data
 @Builder
 public class CreateJavaScriptFrameworkDto {

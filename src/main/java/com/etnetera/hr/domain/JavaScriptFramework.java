@@ -69,5 +69,4 @@ public class JavaScriptFramework {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 }

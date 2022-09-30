@@ -29,14 +29,13 @@ public class IJavaScriptFrameworkServiceImplTest {
     @Autowired
     private JavaScriptFrameworkRepository frameworkRepository;
 
-
     @Test
     @DisplayName("Returning all frameworks. Should return all JavaScript frameworks dtos")
     void testGetAllFrameworks() {
-        //when
+        // when
         Iterable<JavaScriptFrameworkDto> frameworks = frameworkService.getAllFrameworks();
 
-        //then
+        // then
         assertThat(frameworks).isNotNull();
         assertThat(frameworks).hasSize(4);
     }
@@ -45,10 +44,10 @@ public class IJavaScriptFrameworkServiceImplTest {
     @DisplayName("Trying to return all frameworks when there are none present. Should return empty Iterable")
     @Sql(scripts = "/db/delete_data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     void testReturnAllFrameworks_noFrameworksFound() {
-        //when
+        // when
         Iterable<JavaScriptFrameworkDto> frameworks = frameworkService.getAllFrameworks();
 
-        //then
+        // then
         assertThat(frameworks).isNotNull();
         assertThat(frameworks).isEmpty();
     }
@@ -56,10 +55,10 @@ public class IJavaScriptFrameworkServiceImplTest {
     @Test
     @DisplayName("Finding framework by id. Should return correct JavaScriptFrameworkDto")
     void testFindFrameworkById() {
-        //when
+        // when
         Optional<JavaScriptFrameworkDto> framework = frameworkService.findFrameworkById(3L);
 
-        //then
+        // then
         assertThat(framework).isPresent();
         assertThat(framework.get().getId()).isEqualTo(3L);
     }
@@ -68,10 +67,10 @@ public class IJavaScriptFrameworkServiceImplTest {
     @DisplayName("Trying to find non existing framework by id. Should return empty Optional")
     @Sql(scripts = "/db/delete_data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     void testFindFrameworkById_idNotFound() {
-        //when
+        // when
         Optional<JavaScriptFrameworkDto> framework = frameworkService.findFrameworkById(3L);
 
-        //then
+        // then
         assertThat(framework).isEmpty();
         assertThat(framework).isNotNull();
     }
@@ -85,11 +84,12 @@ public class IJavaScriptFrameworkServiceImplTest {
                 .hypeLevel(HypeLevelEnum.SENSATIONAL)
                 .versions(Set.of("3.2.0"))
                 .build();
-        //when
+
+        // when
         Optional<JavaScriptFrameworkDto> result = frameworkService.saveFramework(createFrameworkDto);
         Iterable<JavaScriptFramework> frameworks = frameworkRepository.findAll();
 
-        //then
+        // then
         assertThat(result).isPresent();
         assertThat(result.get().getName()).isEqualTo("VueJs");
         assertThat(frameworks).hasSize(5);
@@ -104,11 +104,12 @@ public class IJavaScriptFrameworkServiceImplTest {
                 .hypeLevel(HypeLevelEnum.SENSATIONAL)
                 .versions(Set.of("3.2.0"))
                 .build();
-        //when
+
+        // when
         Optional<JavaScriptFrameworkDto> result = frameworkService.saveFramework(createFrameworkDto);
         Iterable<JavaScriptFramework> frameworks = frameworkRepository.findAll();
 
-        //then
+        // then
         assertThat(result).isEmpty();
         assertThat(result).isNotNull();
         assertThat(frameworks).hasSize(4);
@@ -117,11 +118,11 @@ public class IJavaScriptFrameworkServiceImplTest {
     @Test
     @DisplayName("Deleting existing framework. Should return boolean true")
     void testDeleteFramework() {
-        //when
+        // when
         boolean result = frameworkService.deleteFramework(3L);
         Iterable<JavaScriptFramework> frameworks = frameworkRepository.findAll();
 
-        //then
+        // then
         assertThat(result).isTrue();
         assertThat(frameworks).hasSize(3);
     }
@@ -129,11 +130,11 @@ public class IJavaScriptFrameworkServiceImplTest {
     @Test
     @DisplayName("Trying to delete non existing framework. Should return boolean false")
     void testDeleteFramework_frameworkNotFound() {
-        //when
+        // when
         boolean result = frameworkService.deleteFramework(5L);
         Iterable<JavaScriptFramework> frameworks = frameworkRepository.findAll();
 
-        //then
+        // then
         assertThat(result).isFalse();
         assertThat(frameworks).hasSize(4);
     }
@@ -148,6 +149,7 @@ public class IJavaScriptFrameworkServiceImplTest {
                 .hypeLevel(HypeLevelEnum.SENSATIONAL)
                 .versions(Set.of("3.2.37", "3.2.39"))
                 .build();
+
         // when
         Optional<JavaScriptFrameworkDto> result = frameworkService.updateFramework(frameworkDto);
         Optional<JavaScriptFrameworkDto> framework = frameworkService.findFrameworkById(4L);
@@ -171,6 +173,7 @@ public class IJavaScriptFrameworkServiceImplTest {
                 .hypeLevel(HypeLevelEnum.SENSATIONAL)
                 .versions(Set.of("3.2.37", "3.2.39"))
                 .build();
+
         // when
         Optional<JavaScriptFrameworkDto> result = frameworkService.updateFramework(frameworkDto);
         Optional<JavaScriptFrameworkDto> framework = frameworkService.findFrameworkById(9L);
@@ -192,6 +195,7 @@ public class IJavaScriptFrameworkServiceImplTest {
                 .hypeLevel(HypeLevelEnum.SENSATIONAL)
                 .versions(Set.of("3.2.37", "3.2.39"))
                 .build();
+
         // when
         Optional<JavaScriptFrameworkDto> result = frameworkService.updateFramework(frameworkDto);
         Optional<JavaScriptFrameworkDto> framework = frameworkService.findFrameworkById(4L);
@@ -207,10 +211,10 @@ public class IJavaScriptFrameworkServiceImplTest {
     @Test
     @DisplayName("Finding frameworks by HypeLevel. Should return correct collection of JavaScriptFrameworkDtos")
     void testGetFrameworksByHype() {
-        //when
+        // when
         Iterable<JavaScriptFrameworkDto> frameworks = frameworkService.getFrameworksByHype("SENSATIONAL");
 
-        //then
+        // then
         assertThat(frameworks).isNotNull();
         assertThat(frameworks).hasSize(2);
     }
@@ -218,10 +222,10 @@ public class IJavaScriptFrameworkServiceImplTest {
     @Test
     @DisplayName("Trying to find frameworks by HypeLevel when there are none. Should return empty Iterable")
     void testGetFrameworksByHype_NoFrameworksFound() {
-        //when
+        // when
         Iterable<JavaScriptFrameworkDto> frameworks = frameworkService.getFrameworksByHype("GOOD");
 
-        //then
+        // then
         assertThat(frameworks).isNotNull();
         assertThat(frameworks).isEmpty();
     }

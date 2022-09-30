@@ -8,6 +8,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+/**
+ * Framework mapper
+ *
+ * @author Marketa Halikova
+ */
 @Mapper(componentModel = "spring")
 public interface FrameworkMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -16,5 +21,4 @@ public interface FrameworkMapper {
     JavaScriptFramework createDtoToEntity(CreateJavaScriptFrameworkDto dto);
 
     JavaScriptFrameworkDto entityToDto(JavaScriptFramework entity);
-
 }
