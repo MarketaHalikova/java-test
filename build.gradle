@@ -17,4 +17,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+	testRuntime 'com.h2database:h2'
+	implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+	testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+	testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+	testImplementation 'org.assertj:assertj-core:3.21.0'
+}
+test {
+	useJUnitPlatform()
+	testLogging.showStandardStreams = true
 }
